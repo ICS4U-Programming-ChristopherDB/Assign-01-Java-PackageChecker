@@ -48,15 +48,24 @@ public final class PackageChecker {
     }
   }
 
-  private static boolean GetUserValues() {
+    /**
+   * Master method that gets all user input.
+   * Returns a boolean value to indicate successful operation.
+   * @return executedSuccessfully.
+   */
+    private static boolean GetUserValues() {
+    // Dumb variable to please linter. Linter does not like returning raw data.
+    boolean executedSuccessfully;
+
     Scanner valuesScanner = new Scanner(System.in);
     PresentOptionsMenu("MASS UNITS", massUnits);
     System.out.print("Enter the mass unit you would like to use:\n> ");
     userMassUnit = GetChoice(valuesScanner.nextLine(), massUnits);
 
     if (userMassUnit.equals("Choice does not exist")) {
-      System.out.println("\nYou must select a valid mass unit!");
-      return false;
+        System.out.println("\nYou must select a valid mass unit!");
+        executedSuccessfully = false;
+        return executedSuccessfully;
     }
 
     PresentOptionsMenu("LENGTH UNITS", lengthUnits);
@@ -64,15 +73,18 @@ public final class PackageChecker {
     userLengthUnit = GetChoice(valuesScanner.nextLine(), lengthUnits);
 
     if (userLengthUnit.equals("Choice does not exist")) {
-      System.out.println("\nYou must select a valid length unit!");
-      return false;
+        System.out.println("\nYou must select a valid length unit!");
+        executedSuccessfully = false;
+        return executedSuccessfully;
     }
 
     if (!GetMeasurements()) {
-      System.out.println("\nYou must enter numbers for measurements!");
-      return false;
+        System.out.println("\nYou must enter numbers for measurements!");
+        executedSuccessfully = false;
+        return executedSuccessfully;
     }
-    return true;
+    executedSuccessfully = true;
+    return executedSuccessfully;
   }
 
   private static void PresentOptionsMenu(String title, String[] options) {
