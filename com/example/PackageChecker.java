@@ -203,22 +203,23 @@ public final class PackageChecker {
         if (volume > 10000d) {
             System.out.println("Cannot send package! It is too large!");
         }
+        else {
+            switch (userMassUnit) {
+                case "g":
+                    packageMass /= 1000d;
+                    break;
+                case "lbs":
+                    packageMass /= 2.205d;
+                    break;
+                default:
+                    break;
+            }
 
-        switch (userMassUnit) {
-            case "g":
-                packageMass /= 1000d;
-                break;
-            case "lbs":
-                packageMass /= 2.205d;
-                break;
-            default:
-                break;
-        }
-
-        if (packageMass > 27d) {
-            System.out.println("Cannot send package! It weighs too much!");
-        } else {
-            System.out.println("\n~Your package can be loaded!~");
+            if (packageMass > 27d) {
+                System.out.println("Cannot send package! It weighs too much!");
+            } else {
+                System.out.println("\n~Your package can be loaded!~");
+            }
         }
     }
 
