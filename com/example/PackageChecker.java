@@ -3,7 +3,7 @@ package com.example;
 import java.util.Scanner;
 
 /**
- * Change me.
+ * Package checking problem.
  *
  * @author Christopher Di Bert
  * @version 1.0
